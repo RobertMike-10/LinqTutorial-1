@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using LinqTutorial.MethodSyntax;
 
 namespace LinqTutorial
@@ -47,6 +49,55 @@ namespace LinqTutorial
             //Joins.QuerySyntax.Run();
 
             Console.ReadKey();
+
+            var numbers = new[] { 1, 45, 56, 789, 34, 234, 567 };
+
+            var even = isAny(numbers,  x => x % 2 == 0);
+            var large = isAny(numbers, x => x >100);
+            var totEven = numbers.Count(x => x % 2 == 0);
+
+            var words = new List<String> { "aaa", "duele", "oooo","i","o" };
+            var isAnyLength = isAny(words, word => word.Length == 4);
+            var shortWords = words.Where(word => word.Length < 3);
+
+            foreach(var word in shortWords)
+            {
+                Console.WriteLine(shortWords);
+            }
+
+            words.Add("ay");
+            foreach (var word in shortWords)
+            {
+                Console.WriteLine(shortWords);
+            }
         }
+
+        static bool isAny<T>(IEnumerable<T> collection, Func<T,bool> function)
+        {
+            foreach(T n in collection)
+            {
+                if(function(n))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+        //returns true if any of the words if only uppercase
+        static bool isAnyWordUppercase(IEnumerable<string> words)
+        {
+            return words.Any(word => word.All(c => char.IsUpper(c)));
+        }
+
+        static bool isAnyLargerThanN(int[] numbers, int max)
+        {
+            return numbers.Any(n => n > max);
+        }
+
+        static bool isAnyEven(int[] numbers)
+        {
+            return numbers.Any(n => n % 2 == 0);
+        }
+
     }
 }
