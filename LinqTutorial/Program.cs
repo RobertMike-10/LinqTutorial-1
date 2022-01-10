@@ -56,7 +56,7 @@ namespace LinqTutorial
             var large = isAny(numbers, x => x >100);
             var totEven = numbers.Count(x => x % 2 == 0);
 
-            var words = new List<String> { "aaa", "duele", "oooo","i","o" };
+            var words = new List<String> { "hola", "mundo", "hoy","me","gusta" };
             var isAnyLength = isAny(words, word => word.Length == 4);
             var shortWords = words.Where(word => word.Length < 3);
 
@@ -70,7 +70,29 @@ namespace LinqTutorial
             {
                 Console.WriteLine(shortWords);
             }
-        }
+
+            var animals = new List<String>() { "Cat","Lion", "Tiger", "Dolphin", "Eagle","Horse","Giraffe",
+                                              "Shark", "Elephant"};
+            var animaslWithE = animals.Where(animal =>
+            {
+                Console.WriteLine("Checking animal:" + animal);
+                return animal.StartsWith('E');
+            });
+
+            foreach (var animal in animaslWithE)
+            {
+                Console.WriteLine(animal);
+            }
+
+            var numberArray = new[] { 4, 2, 3, 5, 7, 6, 8, 12, 23, 10, 7, 3, 4, 5 };
+
+            var smallOrdered =
+                (from number in numberArray
+                 where number < 10
+                 orderby number
+                 select number).Distinct();
+        
+}
 
         static bool isAny<T>(IEnumerable<T> collection, Func<T,bool> function)
         {
