@@ -17,6 +17,9 @@ namespace LinqTutorial.MethodSyntax
             var isAnyPetNamedBruce = Data.Pets.Any(pet => pet.Name == "Bruce");
             Console.WriteLine($"isAnyPetNamedBruce: {isAnyPetNamedBruce}");
 
+            var isAnyFish = Data.Pets.Any(pet => pet.PetType == DataTypes.PetType.Fish);
+            Console.WriteLine($"isAnyFish: {isAnyFish}");
+
             var isAnyPetNamedHannibal = Data.Pets.Any(pet => pet.Name == "Hannibal");
             Console.WriteLine($"isAnyPetNamedHannibal: {isAnyPetNamedHannibal}");
 

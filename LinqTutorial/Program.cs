@@ -65,7 +65,7 @@ namespace LinqTutorial
                 Console.WriteLine(shortWords);
             }
 
-            words.Add("ay");
+            words.Add("mi");
             foreach (var word in shortWords)
             {
                 Console.WriteLine(shortWords);
@@ -91,6 +91,9 @@ namespace LinqTutorial
                  where number < 10
                  orderby number
                  select number).Distinct();
+
+            var isLargerThan10 = numberArray.Any(n => n > 10);
+
         
 }
 
