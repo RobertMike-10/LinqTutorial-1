@@ -21,7 +21,12 @@ namespace Exercises
         public static bool AreAllPetsOfTheSameType(IEnumerable<Pet> pets)
         {
             //TODO your code goes here
-            throw new NotImplementedException();
+            /* return pets.All(pet => pet.PetType == PetType.Dog) ||
+                    pets.All(pet => pet.PetType == PetType.Cat) ||
+                     pets.All(pet => pet.PetType == PetType.Fish); */
+            var allPetTypes = Enum.GetValues(typeof(PetType)).Cast<PetType>();
+            return allPetTypes.Any(petType => pets.All(pet => pet.PetType == petType));
+
         }
 
         //Refactoring challenge
@@ -29,7 +34,9 @@ namespace Exercises
         public static bool AreAllWordsOfTheSameLength_Refactored(List<string> words)
         {
             //TODO your code goes here
-            throw new NotImplementedException();
+           
+
+            return words.Count() <2 || words.All(word => word.Length == words[0].Length);
         }
 
         //do not modify this method
