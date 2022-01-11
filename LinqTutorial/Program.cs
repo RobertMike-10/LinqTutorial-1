@@ -55,9 +55,10 @@ namespace LinqTutorial
             var even = isAny(numbers,  x => x % 2 == 0);
             var large = isAny(numbers, x => x >100);
             var totEven = numbers.Count(x => x % 2 == 0);
-
+            // var isAnyLength = isAny(words, word => word.Length == 4);
+            
             var words = new List<String> { "hola", "mundo", "hoy","me","gusta" };
-            var isAnyLength = isAny(words, word => word.Length == 4);
+           
             var shortWords = words.Where(word => word.Length < 3);
 
             foreach(var word in shortWords)
