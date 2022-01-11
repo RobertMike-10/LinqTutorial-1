@@ -31,7 +31,7 @@ namespace LinqTutorial
 
             //we can use any EqualityComparer we like
             var containsAnthonyWithEqualityComparer = Data.Pets.Contains(
-                new Pet(2, "Anthony", PetType.Cat, 2f), new PetEqualityByIdComparer());
+                new Pet(2, "Anthony", PetType.Cat, 2f), new PetEqualityComparer());
             Console.WriteLine($"containsAnthonyWithEqualityComparer: " +
                 $"{containsAnthonyWithEqualityComparer}");
         }

@@ -99,6 +99,7 @@ namespace LinqTutorial
 
             var isLargerThan10 = numberArray.Any(n => n > 10);
 
+
             var numberAnimal = animals.Count();
             Console.WriteLine($"We have {numberAnimal} animals");
 
