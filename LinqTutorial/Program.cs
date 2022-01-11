@@ -64,13 +64,13 @@ namespace LinqTutorial
 
             foreach(var word in shortWords)
             {
-                Console.WriteLine(shortWords);
+                Console.WriteLine(word);
             }
 
             words.Add("mi");
             foreach (var word in shortWords)
             {
-                Console.WriteLine(shortWords);
+                Console.WriteLine(word);
             }
 
 
@@ -99,8 +99,12 @@ namespace LinqTutorial
 
             var isLargerThan10 = numberArray.Any(n => n > 10);
 
-        
-}
+            var numberAnimal = animals.Count();
+            Console.WriteLine($"We have {numberAnimal} animals");
+
+            animals.Add("Spyder");
+            Console.WriteLine($"We have {numberAnimal} animals");
+        }
 
         static bool isAny<T>(IEnumerable<T> collection, Func<T,bool> function)
         {
