@@ -14,7 +14,7 @@ namespace LinqTutorial
             //Any.Run();
             //All.Run();
             //Count.Run();
-            //Contains.Run();
+            Contains.Run();
             //OrderBy.Run();
             //MinMax.Run();
             //Average.Run();
@@ -57,6 +57,7 @@ namespace LinqTutorial
             var totEven = numbers.Count(x => x % 2 == 0);
             // var isAnyLength = isAny(words, word => word.Length == 4);
             
+
             var words = new List<String> { "hola", "mundo", "hoy","me","gusta" };
            
             var shortWords = words.Where(word => word.Length < 3);
@@ -72,6 +73,8 @@ namespace LinqTutorial
                 Console.WriteLine(shortWords);
             }
 
+
+
             var animals = new List<String>() { "Cat","Lion", "Tiger", "Dolphin", "Eagle","Horse","Giraffe",
                                               "Shark", "Elephant"};
             var animaslWithE = animals.Where(animal =>
@@ -84,6 +87,7 @@ namespace LinqTutorial
             {
                 Console.WriteLine(animal);
             }
+
 
             var numberArray = new[] { 4, 2, 3, 5, 7, 6, 8, 12, 23, 10, 7, 3, 4, 5 };
 
