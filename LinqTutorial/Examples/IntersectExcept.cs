@@ -42,7 +42,7 @@ namespace LinqTutorial.MethodSyntax
             Printer.Print(petsIntersectDefaultEqualityCheck, nameof(petsIntersectDefaultEqualityCheck));
 
             //we can provide the custom equality comparer:
-            var petsIntersect = pets1.Intersect(pets2, new PetEqualityByIdComparer());
+            var petsIntersect = pets1.Intersect(pets2, new PetEqualityComparer());
             Printer.Print(petsIntersect, nameof(petsIntersect));
 
             //let's imagine a situation when one pet can have multiple owners
@@ -60,18 +60,18 @@ namespace LinqTutorial.MethodSyntax
                    });
 
             //let's find those Pets who are "shared" between Bob and Alice
-            var sharedBetweenBobAndAlice = alice.Pets.Intersect(bob.Pets, new PetEqualityByIdComparer());
+            var sharedBetweenBobAndAlice = alice.Pets.Intersect(bob.Pets, new PetEqualityComparer());
             Printer.Print(sharedBetweenBobAndAlice, nameof(sharedBetweenBobAndAlice));
 
             //now let's find Pets owned by Bob, who are not owned by Alice
-            var bobExclusivePets = bob.Pets.Except(alice.Pets, new PetEqualityByIdComparer());
+            var bobExclusivePets = bob.Pets.Except(alice.Pets, new PetEqualityComparer());
             Printer.Print(bobExclusivePets, nameof(bobExclusivePets));
 
             //now let's find those Pets who have one owner only
             var petsWithOneOwnerOnly =
                 bob.Pets.Concat(alice.Pets) //those are all pets
                                             //and now we exclude the Pets who are "shared"
-                .Except(alice.Pets.Intersect(bob.Pets, new PetEqualityByIdComparer()));
+                .Except(alice.Pets.Intersect(bob.Pets, new PetEqualityComparer()));
             Printer.Print(petsWithOneOwnerOnly, nameof(petsWithOneOwnerOnly));
 
 
@@ -104,7 +104,7 @@ namespace LinqTutorial.MethodSyntax
             //we can provide custom Equality Comparer
             Console.WriteLine(
                $"{nameof(pets3)}.SequenceEqual({nameof(pets4)}) " +
-               $"(equality compared by id): {pets3.SequenceEqual(pets4, new PetEqualityByIdComparer())}");
+               $"(equality compared by id): {pets3.SequenceEqual(pets4, new PetEqualityComparer())}");
         }
     }
 }

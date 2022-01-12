@@ -49,7 +49,7 @@ namespace LinqTutorial.MethodSyntax
             Printer.Print(petsUnionDefaultEqualityCheck, nameof(petsUnionDefaultEqualityCheck));
 
             //we can provide the custom equality comparer:
-            var petsUnion = pets1.Union(pets2, new PetEqualityByIdComparer());
+            var petsUnion = pets1.Union(pets2, new PetEqualityComparer());
             Printer.Print(petsUnion, nameof(petsUnion));
 
             //we can, of course, chain the Concat and Union methods

@@ -33,7 +33,7 @@ namespace LinqTutorial
             //we can use custom EqualityComparer
             //in this case Distinct will consider them duplicates
             //and remove one of them
-            var petsDistinctById = pets.Distinct(new PetEqualityByIdComparer());
+            var petsDistinctById = pets.Distinct(new PetEqualityComparer());
             Printer.Print(petsDistinctById, nameof(petsDistinctById));
         }
     }
