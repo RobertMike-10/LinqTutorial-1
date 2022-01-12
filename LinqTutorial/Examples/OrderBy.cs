@@ -20,6 +20,7 @@ namespace LinqTutorial
             var petsOrderedByName = Data.Pets.OrderBy(pet => pet.Name);
             Printer.Print(petsOrderedByName, nameof(petsOrderedByName));
 
+            
             var petsOrderedByIdDescending = Data.Pets.OrderByDescending(pet => pet.Id);
             Printer.Print(petsOrderedByIdDescending, nameof(petsOrderedByIdDescending));
 

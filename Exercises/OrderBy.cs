@@ -17,7 +17,7 @@ namespace Exercises
             IEnumerable<string> words)
         {
             //TODO your code goes here
-            throw new NotImplementedException();
+            return words.OrderByDescending(word => word.Length);
         }
 
         //Coding Exercise 2
