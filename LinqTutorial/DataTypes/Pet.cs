@@ -1,6 +1,8 @@
-﻿namespace LinqTutorial.DataTypes
+﻿using System;
+
+namespace LinqTutorial.DataTypes
 {
-    public class Pet
+    public class Pet: IComparable<Pet>
     {
         public int Id { get; }
         public string Name { get; }
@@ -18,6 +20,11 @@
         public override string ToString()
         {
             return $"Id: {Id}, Name: {Name}, Type: {PetType}, Weight: {Weight}";
+        }
+
+        public int CompareTo(Pet other)
+        {
+            return Id.CompareTo(other.Weight);
         }
     }
 }
