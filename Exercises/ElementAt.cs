@@ -24,7 +24,8 @@ namespace Exercises
             IEnumerable<int> numbers, int index)
         {
             //TODO your code goes here
-            throw new NotImplementedException();
+            return index <0 || index >= numbers.Count() ?
+                false :numbers.ElementAt(index) == numbers.Max();
         }
 
         //Coding Exercise 2
@@ -40,7 +41,9 @@ namespace Exercises
             IEnumerable<Pet> pets, int index)
         {
             //TODO your code goes here
-            throw new NotImplementedException();
+            return pets.ElementAtOrDefault(index) != null ?
+                    $"Pet name:{pets.ElementAt(index).Name}" :
+                    $"Pet data is missing for index {index}";
         }
 
         //Refactoring challenge
@@ -48,7 +51,7 @@ namespace Exercises
         public static bool IsEmptyAtIndex_Refactored(IEnumerable<string> words, int index)
         {
             //TODO your code goes here
-            throw new NotImplementedException();
+            return words.Any() && !String.IsNullOrEmpty(words.ElementAtOrDefault(index)) ? false: true;
         }
 
         //do not modify this method
