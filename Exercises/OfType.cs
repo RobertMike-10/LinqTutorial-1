@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Exercises
 {
@@ -12,7 +13,7 @@ namespace Exercises
         public static int? GetTheFirstInteger(IEnumerable<object> objects)
         {
             //TODO your code goes here
-            throw new NotImplementedException();
+            return objects.OfType<int?>().FirstOrDefault();
         }
 
         //Coding Exercise 2
@@ -22,7 +23,8 @@ namespace Exercises
         public static bool AreAllStringsUpperCase(IEnumerable<object> objects)
         {
             //TODO your code goes here
-            throw new NotImplementedException();
+            var result = objects.OfType<string>();
+            return result.Any() ?  result.All(w => w.All(c=> Char.IsUpper(c))): true;
         }
 
         //Refactoring challenge
@@ -30,7 +32,8 @@ namespace Exercises
         public static DateTime? GetTheLatestDate_Refactored(IEnumerable<object> objects)
         {
             //TODO your code goes here
-            throw new NotImplementedException();
+            var dates = objects.OfType<DateTime?>();
+            return dates.Any() ? dates.Max(): null;
         }
 
         //do not modify this method
