@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Exercises
 {
@@ -27,7 +28,12 @@ namespace Exercises
             IEnumerable<News> newsCollection)
         {
             //TODO your code goes here
-            throw new NotImplementedException();
+            var latest = newsCollection.OrderByDescending(n => n.PublishingDate)
+                                 .Take(3);
+            var important = newsCollection.Where(n => n.Priority == Priority.High);
+            return latest.Union(latest);
+
+
         }
 
         //Coding Exercise 2
@@ -50,7 +56,9 @@ namespace Exercises
         public static string CleanWord(string word)
         {
             //TODO your code goes here
-            throw new NotImplementedException();
+            var letters = word.Where(c => Char.IsLetter(c));
+            var other = word.Where(c => !Char.IsLetter(c)).Distinct();
+            return new String(letters.Concat(other).ToArray());
         }
 
         //Refactoring challenge
@@ -59,7 +67,9 @@ namespace Exercises
             IEnumerable<int> numbers1, IEnumerable<int> numbers2)
         {
             //TODO your code goes here
-            throw new NotImplementedException();
+            var square1 = numbers1.Where(number => Math.Sqrt(number) % 1==0);
+            var square2= numbers2.Where(number => Math.Sqrt(number) % 1 == 0);
+            return square1.Union(square2).OrderBy(number => number);
         }
 
         //do not modify this method
