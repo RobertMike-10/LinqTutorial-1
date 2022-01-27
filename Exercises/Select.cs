@@ -26,7 +26,13 @@ namespace Exercises
         public static IEnumerable<int> GetNumbers(IEnumerable<object> objects)
         {
             //TODO your code goes here
-            throw new NotImplementedException();
+            return objects.OfType<int>()
+                  .Concat(objects.OfType<string>().Select(item =>
+                                                    int.TryParse(item, out var result) ?
+                                                    result : (int?)null)
+                  .Where(number => number != null)
+                  .Select(number => number.Value))
+                  .OrderBy(number => number);
         }
 
         //Coding Exercise 2
@@ -54,7 +60,24 @@ namespace Exercises
         public static IEnumerable<Person> PeopleFromString(string input)
         {
             //TODO your code goes here
-            throw new NotImplementedException();
+            string[] arrayPeople = input.Split(";");
+            return arrayPeople.Select(w =>
+            {
+                try
+                {
+                    string[] arrayP = w.Split(",");
+                    string[] fullName = arrayP[0].Split(" ");
+                    return new Person
+                    {
+                        FirstName = fullName[0],
+                        LastName = fullName[1],
+                        DateOfBirth = DateTime.Parse(arrayP[2])
+                    };
+                }
+                catch (Exception)
+                { return null;  }
+            });
+
         }
 
         //Refactoring challenge
@@ -62,7 +85,10 @@ namespace Exercises
         public static TimeSpan TotalDurationOfSongs_Refactored(string allSongsDuration)
         {
             //TODO your code goes here
-            throw new NotImplementedException();
+            return String.IsNullOrEmpty(allSongsDuration) ? new TimeSpan() :
+                   TimeSpan.FromSeconds(allSongsDuration.Split(",")
+                                        .Select(duration => TimeSpan.ParseExact(duration, @"m\:ss", null))
+                                        .Sum(time => time.TotalSeconds));
         }
 
         //do not modify this method
