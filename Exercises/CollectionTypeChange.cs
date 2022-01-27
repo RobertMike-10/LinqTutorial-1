@@ -27,7 +27,8 @@ namespace Exercises
             IEnumerable<string> words)
         {
             //TODO your code goes here
-            throw new NotImplementedException();
+            return words.ToDictionary(w => w,
+                                      w =>  int.TryParse(w, out var result) ? result : (int?)null);
         }
 
         //Coding Exercise 2
@@ -46,7 +47,7 @@ namespace Exercises
             IEnumerable<int> input)
         {
             //TODO your code goes here
-            throw new NotImplementedException();
+            return input.ToLookup(n => n % 2 == 0, n=> n);
         }
 
         //Refactoring challenge
@@ -56,7 +57,8 @@ namespace Exercises
                  IEnumerable<Student> students)
         {
             //TODO your code goes here
-            throw new NotImplementedException();
+            return students.ToDictionary(s => $"{s.FirstName} {s.LastName} {s.DateOfBirth.ToString("d")}",
+                                         s => s.Marks.Any() ?s.Marks.Average():0);
         }
 
         //do not modify this method
