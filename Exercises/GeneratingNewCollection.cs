@@ -29,7 +29,8 @@ namespace Exercises
             int initialYear, int yearsCount)
         {
             //TODO your code goes here
-            throw new NotImplementedException();
+            return Enumerable.Range(initialYear, yearsCount)
+                   .ToDictionary(y => y, y => new DateTime(y,12,31).DayOfWeek.ToString());
         }
 
         //Coding Exercise 2
@@ -52,15 +53,24 @@ namespace Exercises
         public static string BuildTree(int levels)
         {
             //TODO your code goes here
-            throw new NotImplementedException();
+            return string.Join("\n",
+                    Enumerable.Range(1, levels)
+                   .Select(l => string.Join("", Enumerable.Repeat("*", l)))
+                   );
+                   
         }
 
         //Refactoring challenge
         //TODO implement this method
         public static IEnumerable<string> DoubleLetters_Refactored(int countOfLetters)
         {
+             const int maxLetters = 26;
+            var finalCount = Math.Min(countOfLetters, maxLetters);
             //TODO your code goes here
-            throw new NotImplementedException();
+            var allLetters= Enumerable.Range('A', finalCount)
+                  .Select(l => (char)l);
+            return allLetters.SelectMany(_ => allLetters, 
+                                            (first, second) => $"{first}{second}");
         }
 
         //do not modify this method
