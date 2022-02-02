@@ -25,7 +25,8 @@ namespace Exercises
             IEnumerable<string> words2)
         {
             //TODO your code goes here
-            throw new NotImplementedException();
+            return words1.Select(w=> w.ToUpper())
+                         .Intersect(words2.Select(w => w.ToUpper())).Count();
         }
 
         //Coding Exercise 2
@@ -46,7 +47,9 @@ namespace Exercises
             IEnumerable<int> numbers2)
         {
             //TODO your code goes here
-            throw new NotImplementedException();
+            return numbers1.Except(numbers2)
+                           .Concat(numbers2.Except(numbers1))
+                           .OrderBy(n => n);
         }
 
         //Refactoring challenge
@@ -55,8 +58,14 @@ namespace Exercises
             GetRoutesInfo_Refactored(
                 Route route1, Route route2)
         {
-            //TODO your code goes here
-            throw new NotImplementedException();
+            return route1.RoutePoints.Intersect(route2.RoutePoints)
+                         .Select(r => $"SharedPoint {r.Name} at {r.Point}")
+                         .Concat(route1.RoutePoints.Except(route2.RoutePoints)
+                                        .Select(r => $"UnsharedPoint {r.Name} at {r.Point}"))
+                         .Concat(route2.RoutePoints.Except(route1.RoutePoints)
+                                        .Select(r => $"UnsharedPoint {r.Name} at {r.Point}"));
+
+
         }
 
         //do not modify this method
