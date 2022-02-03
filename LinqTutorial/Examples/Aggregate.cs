@@ -52,7 +52,7 @@ namespace LinqTutorial.MethodSyntax
             var factorialBase = 10;
             var factorial = Enumerable.Range(1, factorialBase - 1)
                 .Aggregate(
-                    10,
+                    factorialBase,
                     (factorialSoFar, nextNumber) => factorialSoFar * (factorialBase - nextNumber));
             Console.WriteLine($"factorial: {factorial}");
         }

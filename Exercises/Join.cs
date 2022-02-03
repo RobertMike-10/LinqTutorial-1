@@ -39,7 +39,18 @@ namespace Exercises
              IEnumerable<House> houses)
         {
             //TODO your code goes here
-            throw new NotImplementedException();
+            return people.GroupJoin(houses, p => p.Id, h => h.OwnerId,
+                                    (people, houses) => new
+                                    {
+                                        People = people,
+                                        Houses = houses
+                                    })
+                         .SelectMany(pair => pair.Houses.DefaultIfEmpty(),
+                                     (pair, house) =>
+                                     {
+                                         var houseString = house == null ? "no house" : house.Adderss;
+                                         return $"Person: (Id:{pair.People.Id}), {pair.People.Name} owns {houseString}";
+                                     });
         }
 
         //Coding Exercise 2
@@ -87,7 +98,21 @@ namespace Exercises
             IEnumerable<Order> orders)
         {
             //TODO your code goes here
-            throw new NotImplementedException();
+            return customers.Join(orders, c => c.Id, o => o.CustomerId,
+                                 (customer, order) => new
+                                 {   order,
+                                     customer
+                                 })
+                            .Join(items, oc => oc.order.ItemId, i => i.Id,
+                                (oc, item) => new
+                                {
+                                    Order = oc.order,
+                                    Customer = oc.customer,
+                                    Item = item
+                                })
+                            .Select(oci => $"Customer:{oci.Customer.Name}" +
+                                            $" Item: {oci.Item.Name}" +
+                                           $" Count: {oci.Order.Count}");
         }
 
         //Refactoring challenge
@@ -97,7 +122,13 @@ namespace Exercises
             IEnumerable<House> houses)
         {
             //TODO your code goes here
-            throw new NotImplementedException();
+            return houses.Join(people, h => h.OwnerId, p => p.Id,
+                               (house, person) => new
+                               {
+                                   House = house,
+                                   Owner = person
+                               })
+                        .ToDictionary(x => x.House, x => x.Owner);
         }
 
         //do not modify this method
