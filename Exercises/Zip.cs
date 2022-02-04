@@ -38,7 +38,8 @@ namespace Exercises
             IEnumerable<int> days)
         {
             //TODO your code goes here
-            throw new NotImplementedException();
+            return years.Zip(months).Zip(days, (pair, day) => new DateTime(pair.First, pair.Second, day))
+                        .OrderBy(date => date);
         }
 
         //Coding Exercise 2
@@ -63,7 +64,9 @@ namespace Exercises
                 IEnumerable<DateTime> dates)
         {
             //TODO your code goes here
-            throw new NotImplementedException();
+            return dates.Zip(dates.Skip(1), (date1, date2) =>
+                                          $"It's been {(date2 - date1).TotalDays} between {date1.ToString("yyyy-MM-dd")}" +
+                                          $" {date2.ToString("yyyy-MM-dd")}");
         }
 
         //Refactoring challenge
@@ -71,7 +74,9 @@ namespace Exercises
         public static IEnumerable<string> MakeList_Refactored(IEnumerable<string> words)
         {
             //TODO your code goes here
-            throw new NotImplementedException();
+            return words.Zip(Enumerable.Range('A', words.Count())
+                             .Select(l => (char)l),
+                            (word, letter) => $"{letter}) {word}");
         }
 
         //do not modify this method
